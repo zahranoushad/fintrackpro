@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinTrack – Personal Finance Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="login-page" id="login-page">
+    <div class="login-box">
+      <h2>FinTrack</h2>
+      <p>Your Personal Finance Tracker</p>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button id="login-btn">Login</button>
+      <p class="note">New user? <a href="#" id="signup-link">Sign Up</a></p>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboard">
+    <nav>
+      <h2>FinTrack</h2>
+      <ul>
+        <li><a href="#" class="nav-link active" data-page="home">Dashboard</a></li>
+        <li><a href="#" class="nav-link" data-page="transactions">Transactions</a></li>
+        <li><a href="#" class="nav-link" data-page="charts">Charts</a></li>
+        <li><a href="#" class="nav-link" data-page="settings">Settings</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- Home -->
+      <section class="page active" id="home">
+        <h3>Welcome back, <span id="user-name"></span>!</h3>
+        <div class="summary">
+          <div class="card">Total Income: ₹<span id="total-income">0</span></div>
+          <div class="card">Total Expense: ₹<span id="total-expense">0</span></div>
+          <div class="card">Balance: ₹<span id="balance">0</span></div>
+        </div>
+      </section>
+
+      <!-- Transactions -->
+      <section class="page" id="transactions">
+        <h3>Transactions</h3>
+        <button id="add-expense-btn">+ Add Transaction</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Amount (₹)</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="transactions-body"></tbody>
+        </table>
+      </section>
+
+      <!-- Charts -->
+      <section class="page" id="charts">
+        <h3>Expense Analysis</h3>
+        <canvas id="categoryChart"></canvas>
+      </section>
+
+      <!-- Settings -->
+      <section class="page" id="settings">
+        <h3>Account Settings</h3>
+        <button id="logout-btn">Logout</button>
+        <button id="delete-account-btn" class="danger">Delete Account</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="expense-modal">
+    <div class="modal-content">
+      <h3 id="modal-title">Add Transaction</h3>
+      <form id="expense-form">
+        <input type="hidden" id="expense-id" />
+        <input type="date" id="expense-date" required />
+        <input type="text" id="expense-desc" placeholder="Description" required />
+        <input type="text" id="expense-category" placeholder="Category" required />
+        <input type="number" id="expense-amount" placeholder="Amount (₹)" required />
+        <div class="modal-buttons">
+          <button type="submit">Save</button>
+          <button type="button" id="cancel-btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
